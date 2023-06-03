@@ -5,13 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppService } from './app.service';
 import { RouterTestingModule } from "@angular/router/testing";
 import { RouterModule } from '@angular/router';
-import { TaskpageComponent } from './taskpage/taskpage.component';
-import { ProjectpageComponent } from './projectpage/projectpage.component';
-import { TaskcreationComponent } from './taskcreation/taskcreation.component';
-import { TaskComponent } from './task/task.component';
-import { TaskModule } from './task/task.module';
-import { TaskpageModule } from './taskpage/taskpage.module';
-import { TaskcreationModule } from './taskcreation/taskcreation.module';
+import { TaskpageComponent } from './pages/taskpage/taskpage.component';
+import { ProjectpageComponent } from './pages/projectpage/projectpage.component';
+import { TaskcreationComponent } from './components/taskcreation/taskcreation.component';
+import { TaskComponent } from './components/task/task.component';
+import { TaskModule } from './components/task/task.module';
+import { TaskpageModule } from './pages/taskpage/taskpage.module';
+import { TaskcreationModule } from './components/taskcreation/taskcreation.module';
 @NgModule({
   declarations: [
     AppComponent,

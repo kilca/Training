@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { AppService } from '../app.service';
-import {RouterModule} from '@angular/router';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-taskpage',

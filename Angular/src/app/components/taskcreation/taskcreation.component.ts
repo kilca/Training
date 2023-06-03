@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AppService } from '../app.service';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-task-creation',
