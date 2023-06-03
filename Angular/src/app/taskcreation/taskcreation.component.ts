@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AppService } from '../app.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AppService } from '../app.service';
 export class TaskcreationComponent {
 
   @Output() refreshTask = new EventEmitter<void>();
-  projectId: string | null = null;
+  @Input() projectId: string | null = null;
   name: string = '';
 
   constructor(private service: AppService) {}

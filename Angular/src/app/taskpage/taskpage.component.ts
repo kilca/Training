@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppService } from '../app.service';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-taskpage',
@@ -20,7 +21,7 @@ export class TaskpageComponent {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.projectId = params.id;
+      this.projectId = params['id'];
       this.updateTasks();
     });
   }

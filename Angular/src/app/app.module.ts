@@ -9,12 +9,13 @@ import { TaskpageComponent } from './taskpage/taskpage.component';
 import { ProjectpageComponent } from './projectpage/projectpage.component';
 import { TaskcreationComponent } from './taskcreation/taskcreation.component';
 import { TaskComponent } from './task/task.component';
+import { TaskModule } from './task/task.module';
+import { TaskpageModule } from './taskpage/taskpage.module';
+import { TaskcreationModule } from './taskcreation/taskcreation.module';
 @NgModule({
   declarations: [
     AppComponent,
     ProjectpageComponent,
-    TaskcreationComponent,
-    TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,10 @@ import { TaskComponent } from './task/task.component';
       {path: 'project/:id', component: TaskpageComponent},
     ]),
     HttpClientModule,
-    RouterTestingModule
+    RouterTestingModule,
+    TaskModule,
+    TaskpageModule,
+    TaskcreationModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

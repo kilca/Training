@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// [(ngModel)]="inputName"
 
 import { TaskComponent } from './task.component';
-
+import {FormsModule} from '@angular/forms';
 describe('TaskComponent', () => {
   let component: TaskComponent;
   let fixture: ComponentFixture<TaskComponent>;

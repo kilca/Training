@@ -9,14 +9,15 @@ import { AppService } from '../app.service';
 })
 export class TaskComponent {
 
-  @Input() task: Task;
+  @Input() task: Task = { id: '', name: '', done: false };
   @Output() refreshTask = new EventEmitter<void>();
 
   isEditing: boolean = false;
-  inputName: string = '';
+  public inputName: string = '';
   inputDone: boolean = false;
 
-  constructor(private service: AppService) {}
+  constructor(private service: AppService) {
+  }
 
   ngOnInit() {
     const { name, done } = this.task;
@@ -38,14 +39,14 @@ export class TaskComponent {
     this.updateTask({ id: this.task.id, name: this.inputName, done: this.inputDone });
   }
 
-  deleteTask(task : Task) {
+  deleteTask() {
     this.service.deleteTask(this.task.id).subscribe(() => {
       this.refreshTask.emit();
     });
   }
 
   updateTask(task: Task) {
-    this.service.updateTask(this.task).subscribe(() => {
+    this.service.updateTask(task).subscribe(() => {
       this.refreshTask.emit();
     });
   }
