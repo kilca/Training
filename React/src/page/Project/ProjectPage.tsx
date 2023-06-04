@@ -18,8 +18,7 @@ const ProjectPage = ()=>{
   const [projects, setProjects] = useState<Project[]>();
 
   return (
-    <main className="flex min-h-screen  items-center justify-center p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-center align-center font-mono text-sm flex-col lg:flex">
+      <>
         <h1 className='text-5xl mb-8'>Todo-List App</h1>
         <h2 className='text-2xl mb-8'>Projects</h2>
         <div className='flex-row lg:flex'>
@@ -28,8 +27,7 @@ const ProjectPage = ()=>{
             to={`/project/${project.id}`}>{project?.name}</Link>
           })}
         </div>
-      </div>
-    </main>
+      </>
   )
 }
 export default ProjectPage;

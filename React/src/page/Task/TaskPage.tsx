@@ -24,8 +24,7 @@ const TaskPage = () => {
   }, [id, update]);
 
   return (
-    <main className="flex min-h-screen  items-center justify-center p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-center align-center font-mono text-sm flex-col lg:flex">
+    <>
         <span className="lg:flex flex-row">
           <Link className="max-h-9 mr-2 p-2 bg-blue-600 text-white rounded-lg"
             to='../'>Go back</Link>
@@ -48,8 +47,7 @@ const TaskPage = () => {
             />
           })}
         </div>
-      </div>
-    </main>
+      </>
   )
 }
 
