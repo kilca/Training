@@ -1,0 +1,183 @@
+<style>
+    body{
+        background-color: beige;
+    }
+    .actions {
+        display: flex;
+        flex-direction: row;
+    }
+    button{
+        margin: 10px;
+    }
+    .action{
+        margin:20px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: antiquewhite;
+
+    }
+    .field{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .info-section{
+        margin:20px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: antiquewhite;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test API CRUD</title>
+</head>
+<body>
+  <h1>Test API CRUD</h1>
+  <div class="actions">
+    <div class="action">
+        <button onclick="getAllProjects()">Get all the projects</button>
+    </div>
+    <div class="action">
+        <span class="field">
+            <label for="getProjectId">Project Id</label>
+            <input id="getProjectId" value="egwur7myg27psb8"></input>
+        </span>
+        <button onclick="getTasksOfProject()">Get all the tasks</button>
+    </div>
+    <div class="action">
+        <span class="field">
+            <label for="createTaskProjectId">Project Id</label>
+            <input id="createTaskProjectId" value="egwur7myg27psb8"></input>
+        </span>
+        <span class="field">
+            <label for="createTaskName">Task Name</label>
+            <input id="createTaskName" value="hello world"></input>
+        </span>
+        <button onclick="createTask()">Create a task</button>
+    </div>
+    <div class="action">
+        <span class="field">
+            <label for="updateTaskId">Task Id</label>
+            <input id="updateTaskId" value="id"></input>
+        </span>
+        <span class="field">
+            <label for="updateTaskName">Task Name</label>
+            <input id="updateTaskName" value="id"></input>
+        </span>
+        <span class="field">
+            <label for="updateTaskChecked">Task Checked</label>
+            <input id="updateTaskChecked" type="checkbox" ></input>
+        </span>
+        <button onclick="updateTask()">Update a task</button>
+    </div>
+    <div class="action">
+        <input id="deleteTaskId" value="id"></input>
+        <button onclick="deleteTask()">Delete a task</button>
+    </div>
+    </div>
+    <section class="info-section">
+        <h2 >Info</h2>
+        <p id="elems">
+
+        </p>
+    </section>
+
+  <script>
+    function getAllProjects() {
+      fetch('http://localhost:3000/project')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            elems = document.getElementById("elems");
+            elems.innerText = JSON.stringify(data);
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
+    }
+
+    function getTasksOfProject() {
+        const projectId = document.getElementById("getProjectId").value;
+        console.log(projectId);
+      fetch(`http://localhost:3000/task/${projectId}`)
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            elems = document.getElementById("elems");
+            elems.innerText = data;
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
+    }
+
+    function createTask() {
+        const projectId = document.getElementById("createTaskProjectId").value;
+        const name = document.getElementById("createTaskName").value;
+        const newTask = { name: name, project: projectId };
+        console.log("**new task created",newTask);
+      fetch(`http://localhost:3000/task`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTask),
+      })
+        .then(response => response.json())
+        .then(data => {
+            elems.innerText = "New Element : "+JSON.stringify(data);
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
+    }
+
+    function updateTask() {
+        
+        const taskId = document.getElementById("updateTaskId").value;
+        const name = document.getElementById("updateTaskName").value;
+        const checked = document.getElementById("updateTaskChecked").checked;
+        const task = {id:taskId, name: name, checked: checked };
+
+
+      fetch(`http://localhost:3000/task`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      })
+        .then(response => response.json())
+        .then(data => {
+            elems.innerText = "Element updated : "+JSON.stringify(data);
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
+    }
+
+    function deleteTask() {
+        const id = document.getElementById("deleteTaskId").value;
+
+      fetch(`http://localhost:3000/task/${id}`, {
+        method: 'DELETE',
+      })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            elems.innerText = "Element removed : "+JSON.stringify(response);
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
+    }
+  </script>
+</body>
+</html>
