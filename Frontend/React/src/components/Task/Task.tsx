@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { deleteTask, updateTask } from "../../services/Services";
 
 interface TaskProps {
@@ -18,11 +18,11 @@ const Task = ( task : TaskProps)=>{
     setIsEditing(true);
   };
 
-  const handleInputChange = (event: any) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputName(event.target.value);
   };
 
-  const handleCheckboxChange = (event: any) => {
+  const handleCheckboxChange = () => {
     updateTask({id:id,name:inputName,done:!inputDone})
       .finally(()=>{
         refreshTask()
@@ -39,7 +39,9 @@ const Task = ( task : TaskProps)=>{
   };
 
   const callDelete = ()=>{
-    deleteTask(id).finally(()=>{ refreshTask() });
+    deleteTask(id).finally(()=>{ 
+      refreshTask() 
+    });
   }
     
 

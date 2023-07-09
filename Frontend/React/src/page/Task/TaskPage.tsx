@@ -3,12 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import TaskCreation from "../../components/Task/TaskCreation";
 import Task from "../../components/Task/Task";
 import { getTasks } from "../../services/Services";
+import { Task as TaskModel } from "../../model/task.model";
 
 const TaskPage = () => {
 
   let { id } = useParams();
 
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<TaskModel[]>([]);
   const [update, setUpdate] = useState<boolean>(true);
 
   useEffect(() => {

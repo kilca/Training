@@ -9,7 +9,7 @@ const TaskCreation = ({ refreshTask, projectId }: TaskCreationProps)=>{
 
     const [name,setName] = useState<string>('');
 
-    const handleInputChange = (event: any) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setName(event.target.value);
     };
 
