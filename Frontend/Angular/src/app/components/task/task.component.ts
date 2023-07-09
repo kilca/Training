@@ -12,8 +12,9 @@ export class TaskComponent {
   @Input() task: Task = { id: '', name: '', done: false };
   @Output() refreshTask = new EventEmitter<void>();
 
-  isEditing: boolean = false;
   public inputName: string = '';
+
+  isEditing: boolean = false;
   inputDone: boolean = false;
 
   constructor(private service: AppService) {
