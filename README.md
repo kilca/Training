@@ -6,5 +6,7 @@ I use pocketbase as a database server and api endpoint, see `./pocketbase`
 
 For the moment we have
 - React
-- Nextjs
+- Vue
 - Angular
+- Nextjs
+- React Native
