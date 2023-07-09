@@ -12,8 +12,13 @@ I use pocketbase as a database server and api endpoint, see `./pocketbase`
 **I don't consider myself an expert in any of these technologies. Assume that the code is not a good reference.**
 
 For the moment we have
+### Web
 - React
 - Vue
 - Angular
+
+### Web serverside
 - Nextjs
+
+### Mobile
 - React Native
